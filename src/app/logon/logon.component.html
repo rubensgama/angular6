@@ -1,5 +1,5 @@
 <h2>Autenticação</h2>
-<form [formGroup]="logonForm" (ngSubmit)="authenticate()">
+<form name="logonForm" [formGroup]="logonForm" (ngSubmit)="authenticate()" class="form-group">
   <table>
     <tbody>
     <tr>
@@ -7,7 +7,7 @@
             Username:
         </td>
         <td>
-            <input type="text" name="username" formControlName="username"/>
+            <input type="text" name="username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': hasUserNameError() }"/>
         </td>
     </tr>
     <tr>
@@ -15,12 +15,12 @@
             Password:
         </td>
         <td>
-            <input type="password" name="password" formControlName="password"/>
+            <input type="password" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': hasPasswordError() }"/>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <button type="submit">Sign In</button>
+            <button type="submit" class="btn btn-primary">Sign In</button>
         </td>
     </tr>
     </tbody>

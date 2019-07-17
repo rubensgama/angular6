@@ -45,12 +45,17 @@ export class TodosComponent implements OnInit {
    * Saves a new todo.
    */
   save() {
-    this.newTodo.id = this.todos.length;
-    this.newTodo.done = false;
-    this.todoService.save(this.newTodo).subscribe(resp => {
-      this.toastr.success('Saved successfully.');
-      this.list();
-    });
+    if (this.newTodo.description === undefined || this.newTodo.description.trim().length === 0) {
+      this.toastr.error('Description is required.');
+    } else {
+      this.newTodo.id = this.todos.length;
+      this.newTodo.done = false;
+      this.todoService.save(this.newTodo).subscribe(resp => {
+        this.toastr.success('Saved successfully.');
+        this.list();
+      });
+      this.newTodo = new Todo();
+    }
   }
 
   /**
