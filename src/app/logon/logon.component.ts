@@ -5,14 +5,26 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { AuthUser } from 'src/model/AuthUser';
 import { Router } from '@angular/router';
 
+/**
+ * Front controller of user logon.
+ */
 @Component({
   selector: 'app-logon',
   templateUrl: './logon.component.html',
   styleUrls: ['./logon.component.css']
 })
-export class LogonComponent implements OnInit {
+export class LogonComponent {
+  /**
+   * Logon form.
+   */
   private logonForm: FormGroup;
 
+  /**
+   * Constructor
+   * @param auth AuthService instance.
+   * @param formBuilder Angular reactive form builder.
+   * @param router Navigation router.
+   */
   constructor(private auth: AuthService, private formBuilder: FormBuilder,
     private router: Router) {
     this.logonForm = this.formBuilder.group({
@@ -21,9 +33,9 @@ export class LogonComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
+  /**
+   * Execute authentication procedure.
+   */
   authenticate(): void {
     if (this.logonForm.valid) {
       this.auth.authenticate(new User(this.logonForm.controls['username'].value, this.logonForm.controls['password'].value)).subscribe(user => {

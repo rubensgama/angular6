@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+/**
+ * Route guard to check if a user is logged in before access a protected url of the 
+ * application.
+ */
 @Injectable({
   providedIn: 'root'
 })

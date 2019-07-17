@@ -4,6 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/model/User';
 import { AuthUser } from 'src/model/AuthUser';
 
+/**
+ * Service used to execute authentication procedure and 
+ * maintain the user data logged in the application.
+ */
 @Injectable({
   providedIn: 'root'
 })
